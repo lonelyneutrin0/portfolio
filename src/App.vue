@@ -7,16 +7,16 @@ const router = useRouter()
 const scrollToSection = async (sectionId: string) => {
   // Navigate to experience page first
   await router.push('/experience')
-  
+
   // Wait for next tick to ensure the page is rendered
-  await new Promise(resolve => setTimeout(resolve, 100))
-  
+  await new Promise((resolve) => setTimeout(resolve, 100))
+
   // Scroll to the section
   const element = document.getElementById(sectionId)
   if (element) {
-    element.scrollIntoView({ 
+    element.scrollIntoView({
       behavior: 'smooth',
-      block: 'start'
+      block: 'start',
     })
   }
 }
@@ -39,7 +39,9 @@ const scrollToSection = async (sectionId: string) => {
             <div class="dropdown-menu">
               <a @click="scrollToSection('experience')" class="dropdown-link">Experience</a>
               <a @click="scrollToSection('education')" class="dropdown-link">Education</a>
-              <a @click="scrollToSection('research')" class="dropdown-link">Research & Publications</a>
+              <a @click="scrollToSection('research')" class="dropdown-link"
+                >Research & Publications</a
+              >
             </div>
           </li>
           <li class="nav-item">

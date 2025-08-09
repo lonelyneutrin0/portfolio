@@ -141,7 +141,7 @@
         </div>
 
         <!-- Publications Section -->
-        <div class="subsection">
+        <div id="publications" class="subsection">
           <h3 class="subsection-title">Publications & Abstracts</h3>
           <div class="publications-grid">
             <!-- Add your papers/abstracts here -->

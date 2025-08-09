@@ -1,5 +1,24 @@
 <script setup lang="ts">
-import { RouterLink } from 'vue-router'
+import { RouterLink, useRouter } from 'vue-router'
+
+const router = useRouter()
+
+const scrollToSection = async (sectionId: string) => {
+  // Navigate to experience page first
+  await router.push('/experience')
+  
+  // Wait for next tick to ensure the page is rendered
+  await new Promise(resolve => setTimeout(resolve, 100))
+  
+  // Scroll to the section
+  const element = document.getElementById(sectionId)
+  if (element) {
+    element.scrollIntoView({ 
+      behavior: 'smooth',
+      block: 'start'
+    })
+  }
+}
 </script>
 
 <template>
@@ -15,8 +34,9 @@ import { RouterLink } from 'vue-router'
             dynamics, reservoir computing, and high performance computing.
           </p>
           <div class="hero-buttons">
-            <RouterLink to="/projects" class="btn btn-primary">View My Work</RouterLink>
-            <RouterLink to="/contact" class="btn btn-secondary">Contact me</RouterLink>
+            <RouterLink to="/projects" class="btn btn-primary">View My Projects</RouterLink>
+            <button @click="scrollToSection('publications')" class="btn btn-secondary">View My Publications</button>
+            <RouterLink to="/contact" class="btn btn-outline">Contact me</RouterLink>
           </div>
         </div>
         <div class="hero-image">
@@ -170,13 +190,26 @@ import { RouterLink } from 'vue-router'
 }
 
 .btn-secondary {
+  background: linear-gradient(135deg, var(--color-orange), var(--color-orange-dark));
+  color: white;
+  border: none;
+  box-shadow: var(--shadow-md);
+  cursor: pointer;
+}
+
+.btn-secondary:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-lg);
+}
+
+.btn-outline {
   background-color: transparent;
   color: var(--color-primary);
   border-color: var(--color-primary);
   box-shadow: var(--shadow-sm);
 }
 
-.btn-secondary:hover {
+.btn-outline:hover {
   background-color: var(--color-primary);
   color: white;
   transform: translateY(-2px);
@@ -473,11 +506,15 @@ import { RouterLink } from 'vue-router'
 
   .hero-buttons {
     justify-content: center;
+    gap: 1rem;
   }
 
   .btn {
-    padding: 0.875rem 1.5rem;
-    font-size: 0.95rem;
+    padding: 0.875rem 1.25rem;
+    font-size: 0.9rem;
+    flex: 1;
+    min-width: 0;
+    text-align: center;
   }
 
   .profile-image {
@@ -502,6 +539,17 @@ import { RouterLink } from 'vue-router'
   .skill-item,
   .link-card {
     padding: 2rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-buttons {
+    flex-direction: column;
+    gap: 1rem;
+  }
+  
+  .btn {
+    width: 100%;
   }
 }
 </style>
