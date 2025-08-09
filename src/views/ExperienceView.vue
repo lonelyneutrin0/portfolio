@@ -83,7 +83,7 @@
             <div class="award-item">
               <h4>Dean's List</h4>
               <p class="award-organization">Michigan State University</p>
-              <p class="award-year">2024</p>
+              <p class="award-year">Fall 2024 - Present</p>
             </div>
           </div>
         </div>

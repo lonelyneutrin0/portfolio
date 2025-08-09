@@ -6,16 +6,16 @@ const router = useRouter()
 const scrollToSection = async (sectionId: string) => {
   // Navigate to experience page first
   await router.push('/experience')
-  
+
   // Wait for next tick to ensure the page is rendered
-  await new Promise(resolve => setTimeout(resolve, 100))
-  
+  await new Promise((resolve) => setTimeout(resolve, 100))
+
   // Scroll to the section
   const element = document.getElementById(sectionId)
   if (element) {
-    element.scrollIntoView({ 
+    element.scrollIntoView({
       behavior: 'smooth',
-      block: 'start'
+      block: 'start',
     })
   }
 }
@@ -35,7 +35,9 @@ const scrollToSection = async (sectionId: string) => {
           </p>
           <div class="hero-buttons">
             <RouterLink to="/projects" class="btn btn-primary">View My Projects</RouterLink>
-            <button @click="scrollToSection('publications')" class="btn btn-secondary">View My Publications</button>
+            <button @click="scrollToSection('publications')" class="btn btn-secondary">
+              View My Publications
+            </button>
             <RouterLink to="/contact" class="btn btn-outline">Contact me</RouterLink>
           </div>
         </div>
@@ -547,7 +549,7 @@ const scrollToSection = async (sectionId: string) => {
     flex-direction: column;
     gap: 1rem;
   }
-  
+
   .btn {
     width: 100%;
   }
