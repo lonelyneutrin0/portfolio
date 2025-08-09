@@ -259,12 +259,12 @@ import { RouterLink } from 'vue-router'
 }
 
 .skill-item {
-  background: #1a1a1a;
+  background: var(--color-background-soft);
   padding: 2.5rem;
   border-radius: 1.5rem;
   text-align: center;
   transition: all 0.3s ease;
-  border: 1px solid #333;
+  border: 1px solid var(--color-border);
   position: relative;
   overflow: hidden;
   box-shadow: var(--shadow);
@@ -333,7 +333,7 @@ import { RouterLink } from 'vue-router'
 }
 
 .skill-item p {
-  color: #cccccc;
+  color: var(--color-text-mute);
   line-height: 1.7;
   font-size: 1rem;
 }
