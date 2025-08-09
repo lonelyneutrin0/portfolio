@@ -14,8 +14,13 @@ import { RouterLink, RouterView } from 'vue-router'
           <li class="nav-item">
             <RouterLink to="/about" class="nav-link">About</RouterLink>
           </li>
-          <li class="nav-item">
+          <li class="nav-item dropdown">
             <RouterLink to="/experience" class="nav-link">Experience</RouterLink>
+            <div class="dropdown-menu">
+              <a href="/experience#experience" class="dropdown-link">Experience</a>
+              <a href="/experience#education" class="dropdown-link">Education</a>
+              <a href="/experience#research" class="dropdown-link">Research & Publications</a>
+            </div>
           </li>
           <li class="nav-item">
             <RouterLink to="/projects" class="nav-link">Projects</RouterLink>
@@ -85,6 +90,50 @@ import { RouterLink, RouterView } from 'vue-router'
 
 .nav-item {
   margin: 0;
+  position: relative;
+}
+
+.dropdown {
+  position: relative;
+}
+
+.dropdown-menu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background: var(--color-background);
+  border: 1px solid var(--color-border);
+  border-radius: 0.75rem;
+  box-shadow: var(--shadow-lg);
+  min-width: 200px;
+  padding: 0.5rem 0;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-10px);
+  transition: all 0.2s ease;
+  z-index: 1001;
+}
+
+.dropdown:hover .dropdown-menu {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.dropdown-link {
+  display: block;
+  color: var(--color-text);
+  text-decoration: none;
+  padding: 0.75rem 1.25rem;
+  font-size: 0.9rem;
+  font-weight: 500;
+  transition: all 0.2s ease;
+  border-radius: 0;
+}
+
+.dropdown-link:hover {
+  color: var(--color-primary);
+  background-color: rgba(139, 92, 246, 0.05);
 }
 
 .nav-link {
@@ -149,6 +198,17 @@ import { RouterLink, RouterView } from 'vue-router'
 
   .nav-logo {
     font-size: 1.25rem;
+  }
+
+  .dropdown-menu {
+    min-width: 180px;
+    right: 0;
+    left: auto;
+  }
+
+  .dropdown-link {
+    padding: 0.65rem 1rem;
+    font-size: 0.875rem;
   }
 }
 

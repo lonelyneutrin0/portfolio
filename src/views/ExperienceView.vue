@@ -4,7 +4,7 @@
       <h1 class="page-title">Experience</h1>
 
       <!-- Professional Experience -->
-      <section class="experience-section">
+      <section id="experience" class="experience-section">
         <h2 class="section-title">Experience</h2>
         <div class="timeline">
           <div class="timeline-item">
@@ -43,7 +43,7 @@
       </section>
 
       <!-- Education -->
-      <section class="education-section">
+      <section id="education" class="education-section">
         <h2 class="section-title">Education</h2>
 
         <!-- Academic Programs -->
@@ -90,7 +90,7 @@
       </section>
 
       <!-- Research & Publications -->
-      <section class="research-section">
+      <section id="research" class="research-section">
         <h2 class="section-title">Research & Publications</h2>
 
         <!-- Research Projects -->
