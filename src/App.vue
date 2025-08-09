@@ -1,5 +1,25 @@
 <script setup lang="ts">
 import { RouterLink, RouterView } from 'vue-router'
+import { useRouter } from 'vue-router'
+
+const router = useRouter()
+
+const scrollToSection = async (sectionId: string) => {
+  // Navigate to experience page first
+  await router.push('/experience')
+  
+  // Wait for next tick to ensure the page is rendered
+  await new Promise(resolve => setTimeout(resolve, 100))
+  
+  // Scroll to the section
+  const element = document.getElementById(sectionId)
+  if (element) {
+    element.scrollIntoView({ 
+      behavior: 'smooth',
+      block: 'start'
+    })
+  }
+}
 </script>
 
 <template>
@@ -17,9 +37,9 @@ import { RouterLink, RouterView } from 'vue-router'
           <li class="nav-item dropdown">
             <RouterLink to="/experience" class="nav-link">Experience</RouterLink>
             <div class="dropdown-menu">
-              <a href="/experience#experience" class="dropdown-link">Experience</a>
-              <a href="/experience#education" class="dropdown-link">Education</a>
-              <a href="/experience#research" class="dropdown-link">Research & Publications</a>
+              <a @click="scrollToSection('experience')" class="dropdown-link">Experience</a>
+              <a @click="scrollToSection('education')" class="dropdown-link">Education</a>
+              <a @click="scrollToSection('research')" class="dropdown-link">Research & Publications</a>
             </div>
           </li>
           <li class="nav-item">
@@ -129,11 +149,17 @@ import { RouterLink, RouterView } from 'vue-router'
   font-weight: 500;
   transition: all 0.2s ease;
   border-radius: 0;
+  cursor: pointer;
 }
 
 .dropdown-link:hover {
   color: var(--color-primary);
   background-color: rgba(139, 92, 246, 0.05);
+}
+
+.dropdown-link.router-link-active {
+  color: var(--color-primary);
+  background-color: rgba(139, 92, 246, 0.1);
 }
 
 .nav-link {

@@ -1,5 +1,10 @@
 @import './base.css';
 
+/* Smooth scrolling for all elements */
+html {
+  scroll-behavior: smooth;
+}
+
 #app {
   margin: 0;
   padding: 0;
